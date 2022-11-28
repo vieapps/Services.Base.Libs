@@ -9,9 +9,9 @@
 		<Company>VIEApps.net</Company>
 		<Product>VIEApps NGX</Product>
 		<Copyright>© $([System.DateTime]::Now.Year) VIEApps.net</Copyright>
-		<AssemblyVersion>10.6$(ReleaseVersion)</AssemblyVersion>
-		<FileVersion>10.6$(ReleaseVersion)</FileVersion>
-		<InformationalVersion>10.6.$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).$([System.DateTime]::Now.Day)@$(TargetFramework)#$(ReleaseRevision)</InformationalVersion>
+		<AssemblyVersion>10.7$(ReleaseVersion)</AssemblyVersion>
+		<FileVersion>10.7$(ReleaseVersion)</FileVersion>
+		<InformationalVersion>10.7.$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).$([System.DateTime]::Now.Day)@$(TargetFramework)#$(ReleaseRevision)</InformationalVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -23,9 +23,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.win-x64" Version="3.20.5" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'" />
-		<PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64" Version="3.20.5" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'" />
-		<PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.linux-x64" Version="3.20.5" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'" />
+		<PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.win-x64" Version="3.20.6" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'" />
+		<PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64" Version="3.20.6" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'" />
+		<PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.linux-x64" Version="3.20.6" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'" />
 	</ItemGroup>
 
 </Project>
