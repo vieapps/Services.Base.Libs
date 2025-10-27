@@ -1,16 +1,17 @@
 ﻿using Serilog;
 using System.IO;
+using System.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace net.vieapps.Components.Utility
+namespace net.vieapps.Services
 {
 	public static class SerilogExtensions
 	{
 		static Serilog.Core.Logger CreateLogger(string logPath, string filename)
-			=> new LoggerConfiguration().WriteTo.File(path: Path.Combine(logPath, $"{filename.ToLower()}-.txt"), rollingInterval: RollingInterval.Hour).CreateLogger();
+			=> new LoggerConfiguration().WriteTo.File(path: Path.Combine(logPath, $"{filename.ToLower()}..txt"), rollingInterval: RollingInterval.Hour).CreateLogger();
 
 		/// <summary>
-		/// Adds a log file (rolling interval: hour).
+		/// Adds a rolling log file.
 		/// </summary>
 		/// <param name="loggerFactory"></param>
 		/// <param name="logPath"></param>
@@ -18,14 +19,14 @@ namespace net.vieapps.Components.Utility
 		/// <returns></returns>
 		public static ILoggerFactory AddFile(this ILoggerFactory loggerFactory, string logPath, string filename)
 		{
-			logPath = logPath ?? UtilityService.GetAppSetting("Path:Logs");
+			logPath = logPath ?? ConfigurationManager.AppSettings["vieapps:Path:Logs"];
 			if (!string.IsNullOrWhiteSpace(logPath) && Directory.Exists(logPath))
 				loggerFactory.AddSerilog(CreateLogger(logPath, filename));
 			return loggerFactory;
 		}
 
 		/// <summary>
-		/// Adds a log file (rolling interval: hour).
+		/// Adds a rolling log file.
 		/// </summary>
 		/// <param name="loggingBuilder"></param>
 		/// <param name="logPath"></param>
@@ -33,7 +34,7 @@ namespace net.vieapps.Components.Utility
 		/// <returns></returns>
 		public static ILoggingBuilder AddFile(this ILoggingBuilder loggingBuilder, string logPath, string filename)
 		{
-			logPath = logPath ?? UtilityService.GetAppSetting("Path:Logs");
+			logPath = logPath ?? ConfigurationManager.AppSettings["vieapps:Path:Logs"];
 			if (!string.IsNullOrWhiteSpace(logPath) && Directory.Exists(logPath))
 				loggingBuilder.AddSerilog(CreateLogger(logPath, filename));
 			return loggingBuilder;
