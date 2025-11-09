@@ -8,7 +8,10 @@ namespace net.vieapps.Services
 	public static class SerilogExtensions
 	{
 		static Serilog.Core.Logger CreateLogger(string logPath, string filename)
-			=> new LoggerConfiguration().WriteTo.File(path: Path.Combine(logPath, $"{filename.ToLower()}..txt"), rollingInterval: RollingInterval.Hour).CreateLogger();
+			=> new LoggerConfiguration()
+				.WriteTo
+				.File(path: Path.Combine(logPath, $"{filename.ToLower()}-.txt"), rollingInterval: RollingInterval.Hour)
+				.CreateLogger();
 
 		/// <summary>
 		/// Adds a rolling log file.
